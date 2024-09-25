@@ -3,7 +3,7 @@ import axios from "axios";
 const api_key = process.env.NEXT_PUBLIC_STRAPI_API_TOKEN;
 
 const axiosClient = axios.create({
-  baseURL: "http://localhost:1337/api",
+  baseURL: process.env.NEXT_PUBLIC_BACKEND_DOMAIN,
   headers: {
     Authorization: `Bearer ${api_key}`,
   },
