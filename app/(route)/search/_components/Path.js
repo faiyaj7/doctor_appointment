@@ -4,7 +4,6 @@ import React from "react";
 
 const Path = () => {
   const path = usePathname();
-  console.log(path);
 
   return path;
 };

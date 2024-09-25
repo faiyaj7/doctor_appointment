@@ -9,8 +9,7 @@ import {
 } from "@/components/ui/popover";
 import Link from "next/link";
 import { userLogOut } from "@/lib/firebase/auth";
-import { Button } from "@/components/ui/button";
-import { onAuthStateChanged } from "firebase/auth";
+
 import useUserInfo from "@/hooks/useUserInfo";
 const HeaderButton = () => {
   const user = useUserInfo();

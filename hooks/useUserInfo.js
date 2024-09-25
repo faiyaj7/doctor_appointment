@@ -7,14 +7,23 @@ import { useRouter } from "next/navigation";
 const useUserInfo = () => {
   const [user, setUser] = useState(null);
   const router = useRouter();
+
+  // this useEffect is made to protect private routes
+  // but issue is for public pages it redirects to login page.
+  // so to solve it we will use below useEffect and in the component check in useEffect if user is null or not , if null redirect the user to /login (for private routes)
+
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+  //     if (currentUser) {
+  //       setUser(currentUser);
+  //     } else {
+  //
+  //       router.push("/login");
+  //     }
+  //   });
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-      } else {
-        console.log("no user found");
-        router.push("/login");
-      }
+      setUser(currentUser);
     });
 
     return () => {

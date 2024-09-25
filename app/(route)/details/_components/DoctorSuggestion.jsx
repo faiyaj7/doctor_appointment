@@ -13,7 +13,7 @@ const DoctorSuggestion = ({ id }) => {
     }
     doctorDetailsFetch();
   }, [id]);
-  // console.log(data);
+
   return (
     <div className="border">
       <h1 className="text-xl font-semibold my-4 px-10 tracking-wide">
@@ -26,25 +26,27 @@ const DoctorSuggestion = ({ id }) => {
           .map((item) => (
             <Link
               key={item.id}
-              href={`/details/${item.id}`}
+              href={`/details/${item.documentId}`}
               className="flex items-center justify-around gap-5 px-10 hover:bg-slate-100"
             >
               <div className="w-1/2 h-[100px]">
-                <Image
-                  src={item.attributes.image.data.attributes.url}
-                  alt={item.attributes.name}
-                  width={100}
-                  height={100}
-                  className="w-full h-full object-cover rounded-lg"
-                />
+                {item.image && (
+                  <Image
+                    src={item.image?.url}
+                    alt={item.name}
+                    width={100}
+                    height={100}
+                    className="w-full h-full object-cover rounded-lg"
+                  />
+                )}
               </div>
               <div className="">
                 <h1 className="w-fit bg-blue-500 text-white p-2 rounded-2xl text-sm">
-                  {item.attributes.category.data.attributes.Name}
+                  {item.category.Name}
                 </h1>
-                <h1>{item.attributes.name}</h1>
+                <h1>{item.name}</h1>
                 <h1 className="text-sm">
-                  {item.attributes.experience} years of Experience
+                  {item.experience} years of Experience
                 </h1>
               </div>
             </Link>

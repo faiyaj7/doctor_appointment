@@ -29,11 +29,9 @@ export async function getDoctors() {
   }
 }
 
-
 export async function getDoctorByCategory(category) {
   try {
     const response = await getDoctorBasedOnCategory(category);
-    console.log(response.data.data);
 
     return response.data.data; // Adjust to your API endpoint
   } catch (error) {
@@ -45,7 +43,6 @@ export async function getDoctorByCategory(category) {
 export async function getDoctorDetailsById(id) {
   try {
     const response = await getDoctorDetailsBasedOnId(id);
-    console.log(response.data.data);
 
     return response.data.data; // Adjust to your API endpoint
   } catch (error) {
@@ -56,7 +53,6 @@ export async function getDoctorDetailsById(id) {
 export async function createAppointmentBooking(data) {
   try {
     const response = await createBookingAppointment(data);
-    console.log(response.data.data);
 
     return response.data.data; // Adjust to your API endpoint
   } catch (error) {
@@ -78,7 +74,6 @@ export async function getTheUserBookingHistory(email) {
 export async function deleteCurrentUserAppointment(id) {
   try {
     const response = await deleteUserAppointment(id);
-    console.log(response);
 
     return response.data.data; // Adjust to your API endpoint
   } catch (error) {

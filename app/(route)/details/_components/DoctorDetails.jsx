@@ -10,26 +10,27 @@ import { FaLocationDot, FaXTwitter } from "react-icons/fa6";
 const DoctorDetails = ({ id }) => {
   const [data, setData] = useState();
   useEffect(() => {
-    async function doctorDetailsFetch(params) {
+    async function doctorDetailsFetch() {
       const response = await getDoctorDetailsById(id);
-      // console.log(response);
-      setData(response.attributes);
+      setData(response);
     }
     doctorDetailsFetch();
   }, [id]);
-  // console.log(data);
+  //
 
   return (
     <>
       {data && (
         <div className="w-full flex items-start justify-center gap-4 flex-col">
-          <Image
-            src={data?.image.data.attributes.url}
-            alt={data?.name}
-            width={700}
-            height={500}
-            className=" object-contain rounded-lg shadow-lg"
-          />
+          {data?.image && (
+            <Image
+              src={data?.image.url}
+              alt={data?.name}
+              width={700}
+              height={500}
+              className=" object-contain rounded-lg shadow-lg"
+            />
+          )}
           <h1 className="text-6xl tracking-wide font-bold">{data.name}</h1>
           <div className="flex items-center gap-3 ">
             <FaRedhat size={20} />
@@ -42,10 +43,9 @@ const DoctorDetails = ({ id }) => {
           <div className="flex items-center justify-center gap-4">
             {" "}
             <h2 className="w-fit bg-blue-500 text-white p-2 rounded-2xl text-sm">
-              {data.category.data.attributes.Name}
+              {data.category.Name}
             </h2>
-            <BookAppointment doctorId={id}/>
-           
+            <BookAppointment doctorId={id} />
           </div>
           <div className="flex items-center justify-start gap-5">
             <FaYoutube />
@@ -55,7 +55,13 @@ const DoctorDetails = ({ id }) => {
           </div>
           <div className="">
             <h1 className="text-4xl">About Me</h1>
-            <p className="w-3/4">{data.about}</p>
+            {data.about.map((item, index) => (
+              <div className="w-3/4" key={index}>
+                {item.children.map((child, childIndex) => (
+                  <p key={childIndex}>{child.text}</p>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       )}

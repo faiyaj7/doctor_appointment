@@ -27,7 +27,7 @@ const Register = () => {
   }, [user, router]);
   const signUp = async () => {
     const response = await createUser(email, password);
-    console.log(response);
+
     router.push("/login");
   };
   const handleAuthWithGoogle = async () => {

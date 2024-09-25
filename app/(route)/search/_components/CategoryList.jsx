@@ -42,19 +42,19 @@ const CategoryList = () => {
             {data?.map((category) => (
               <CommandItem key={category.id}>
                 <Link
-                  href={`/search/${category.attributes.Name}`}
+                  href={`/search/${category.Name}`}
                   className={`${
-                    actualPath === category.attributes.Name && "bg-blue-100"
+                    actualPath === category.Name && "bg-blue-100"
                   } flex items-center justify-start gap-4 cursor-pointer w-full p-2`}
                 >
                   <Image
-                    src={category.attributes.Icon.data[0].attributes.url}
-                    alt={category.attributes.Name}
+                    src={category?.Icon.url}
+                    alt={category.Name}
                     width={25}
                     height={25}
                   />
                   <h2 className="font-medium text-sm text-blue-500">
-                    {category.attributes.Name}
+                    {category.Name}
                   </h2>
                 </Link>
               </CommandItem>

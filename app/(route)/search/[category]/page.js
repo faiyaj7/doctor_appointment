@@ -20,7 +20,7 @@ const SearchCategory = async ({ params }) => {
       <DoctorList
         data={data}
         heading={null}
-        spanHeading={data[0].attributes.category.data.attributes.Name}
+        spanHeading={data[0].category?.Name}
       />
     </div>
   );

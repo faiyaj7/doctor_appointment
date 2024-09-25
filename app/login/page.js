@@ -22,13 +22,12 @@ const Login = () => {
   useEffect(() => {
     // Check if the user is already authenticated
     if (user) {
-      router.push("/"); // Redirect to the home page if authenticated
+      router.back(); // Redirect to the previous page if authenticated
     }
   }, [user, router]);
 
   const signIn = async () => {
     const response = await signInUser(email, password);
-    console.log(response);
   };
   const handleAuthWithGoogle = async () => {
     try {
