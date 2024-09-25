@@ -8,7 +8,7 @@ const HeroBanner = () => {
       {/* herobanner image */}
       <div className="h-full">
         <Image
-          src="/herobanner.jfif"
+          src="/herobanner.png"
           alt="herobanner"
           fill
           className="w-full h-full -z-10"

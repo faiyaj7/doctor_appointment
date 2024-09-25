@@ -19,10 +19,7 @@ const BookingList = ({ bookingList, expired, handleFetching }) => {
                 className="flex items-center justify-around gap-8 border p-3 rounded-lg w-full m-3 shadow-md"
               >
                 <Image
-                  src={
-                    item.attributes.doctor.data.attributes.image.data.attributes
-                      .url
-                  }
+                  src={item.doctor.image.url}
                   alt={"doctor-image"}
                   width={70}
                   height={70}
@@ -31,26 +28,26 @@ const BookingList = ({ bookingList, expired, handleFetching }) => {
                 <div className="flex flex-col gap-2 w-full">
                   <h2 className="flex justify-between items-center w-full">
                     <span className="text-2xl font-medium">
-                      {item.attributes.doctor.data.attributes.name}
+                      {item.doctor.name}
                     </span>
                     {!expired && (
                       <CancelAppointment
-                        id={item.id}
+                        id={item.documentId}
                         handleFetching={handleFetching}
                       />
                     )}
                   </h2>
                   <h2 className="flex gap-2">
                     <MapPin className="text-blue-500" />
-                    {item.attributes.doctor.data.attributes.address}
+                    {item.doctor.address}
                   </h2>
                   <h2 className="flex gap-2">
                     <Calendar className="text-blue-500" />
-                    {moment(item.attributes.date).format("DD-MMM-YYYY")}
+                    {moment(item.date).format("DD-MMM-YYYY")}
                   </h2>
                   <h2 className="flex gap-2">
                     <Clock className="text-blue-500" />
-                    Time Slot: {item.attributes.time}
+                    Time Slot: {item.time}
                   </h2>
                 </div>
               </div>

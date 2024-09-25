@@ -24,7 +24,7 @@ export const createBookingAppointment = (data) =>
 
 export const getUsersBookingHistory = (email) =>
   axiosClient.get(
-    `/appointments?[filters][email][$eq]=${email}&populate[doctor][populate][image]=url`
+    `/appointments?[filters][email][$eq]=${email}&populate[doctor][populate][0]=image`
   );
 
 export const deleteUserAppointment = (id) =>

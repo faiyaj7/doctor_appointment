@@ -12,7 +12,7 @@ const BookingHistory = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     fetchBookingList();
-  }, [user?.email, fetchBookingList]);
+  }, [user?.email]);
 
   async function fetchBookingList(params) {
     if (user?.email) {
@@ -20,11 +20,12 @@ const BookingHistory = () => {
       setData(response);
     }
   }
+
   const filterUserBooking = (type) => {
     return data?.filter((item) =>
       type == "upcoming"
-        ? new Date(item.attributes.date) >= new Date()
-        : new Date(item.attributes.date) <= new Date()
+        ? new Date(item.date) >= new Date()
+        : new Date(item.date) <= new Date()
     );
   };
   return (

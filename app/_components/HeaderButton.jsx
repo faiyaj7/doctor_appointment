@@ -1,5 +1,5 @@
 "use client";
-import { auth } from "@/lib/firebase/firebase";
+
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import {
@@ -13,17 +13,6 @@ import { userLogOut } from "@/lib/firebase/auth";
 import useUserInfo from "@/hooks/useUserInfo";
 const HeaderButton = () => {
   const user = useUserInfo();
-  // const [user, setUser] = useState();
-
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-  //     setUser(currentUser);
-  //   });
-
-  //   return () => {
-  //     unsubscribe(); // Cleanup the listener on component unmount
-  //   };
-  // }, []);
 
   const loggingout = async () => {
     await userLogOut();

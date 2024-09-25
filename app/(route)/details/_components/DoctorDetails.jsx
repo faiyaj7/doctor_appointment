@@ -23,13 +23,15 @@ const DoctorDetails = ({ id }) => {
       {data && (
         <div className="w-full flex items-start justify-center gap-4 flex-col">
           {data?.image && (
-            <Image
-              src={data?.image.url}
-              alt={data?.name}
-              width={700}
-              height={500}
-              className=" object-contain rounded-lg shadow-lg"
-            />
+            <div className="w-[50%] h-[50%] aspect-square">
+              <Image
+                src={data?.image.url}
+                alt={data?.name}
+                width={1000}
+                height={1000}
+                className=" object-cover rounded-lg shadow-lg w-full h-full"
+              />
+            </div>
           )}
           <h1 className="text-6xl tracking-wide font-bold">{data.name}</h1>
           <div className="flex items-center gap-3 ">
