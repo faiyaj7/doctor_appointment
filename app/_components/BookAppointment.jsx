@@ -64,7 +64,7 @@ const BookAppointment = ({ doctorId }) => {
 
     const response = await createAppointmentBooking(data);
 
-    const emailSent = await axios.post("http://localhost:3000/api/send", data);
+    const emailSent = await axios.post("/api/send", data);
 
     if (response)
       toast("Booking Confirmation message have been sent to your email");
